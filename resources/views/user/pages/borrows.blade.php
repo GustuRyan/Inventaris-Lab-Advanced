@@ -70,7 +70,6 @@
                     @endif
                     @php
                         $user = Auth::user();
-
                         $materials = $cartData->where('material_id', '!=', 0);
                         $tools = $cartData->where('tool_id', '!=', 0);
                     @endphp

@@ -28,6 +28,7 @@ class RoomController extends Controller
 
         $recommends = Cart::where('user_id', auth()->id())->get();
         $relations = collect();
+        $overs = collect();
 
         foreach ($recommends as $recommend) {
             if ($filter == 'material') {
@@ -36,14 +37,18 @@ class RoomController extends Controller
                     $overs = Recommend::where('material_id', $recommend->material_id)->get();
                 }
 
-                $relations = $relations->merge($overs);
+                if ($overs != null) {
+                    $relations = $relations->merge($overs);
+                }
             } else {
                 $details = $details->where('tool_id', '!=', 0)->where('room_id', $major);
                 if ($recommend->tool_id != 0) {
                     $overs = Recommend::where('tool_id', $recommend->tool_id)->get();
                 }
 
-                $relations = $relations->merge($overs);
+                if ($overs != null) {
+                    $relations = $relations->merge($overs);
+                }
             }
         }
 

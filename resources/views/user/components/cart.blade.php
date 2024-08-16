@@ -24,7 +24,6 @@
             </card>
         </section>
 
-
         <section x-show="open" @click.away="open = false" x-cloak
             class="fixed z-50 w-[480px] h-[572px] rounded-2xl bottom-8 right-8 bg-[#F25E5E] shadow-xl p-6">
             <div class="w-full h-full bg-white rounded-xl shadow-lg">
@@ -95,7 +94,6 @@
                 </div>
             </div>
         </section>
-
     @endauth
 </div>
 <script>
