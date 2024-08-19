@@ -19,9 +19,6 @@
                     <p>
                         Karakter: {{ $detail->material->character }}
                     </p>
-                    <p class="text-base">
-                        {{ $detail->material->condition }}
-                    </p>
                     <p class="text-xl font-bold">
                         Stok {{ $detail->material->stocks }} Unit
                     </p>
@@ -29,27 +26,21 @@
                     <p>
                         Merk Barang: {{ $detail->tool->merk }}
                     </p>
-                    <p>
-                        Kondisi Barang:
-                        <span class="font-bold">
-                            {{ $detail->tool->condition }}
-                        </span>
-                    </p>
                     <p class="text-xl font-bold">
                         Stok {{ $detail->tool->stocks }} Unit
                     </p>
                 @endif
             </div>
             @if ($filter == 'material')
-                <div class="justify-center self-center pl-12 pr-6 py-2 mt-12 text-lg text-red-400 whitespace-nowrap bg-white rounded-3xl max-md:px-5 max-md:mt-10"
+                <div class="justify-center self-center pl-12 pr-6 py-2 text-lg text-[#F25E5E] whitespace-nowrap bg-white border-[3px] border-[#F25E5E] rounded-3xl max-md:px-5 max-md:mt-10 group-hover:text-[#343C53] group-hover:border-[#343C53]"
                     tabindex="0">
-                    Jumlah = <input class="w-12" type="number" name="details[{{ $index }}][amount]"
+                    Jumlah = <input class="w-12 space-x-2" type="number" name="details[{{ $index }}][amount]"
                         value="{{ $detail->amount }}">
                 </div>
             @else
-                <div class="flex justify-center self-center pl-12 pr-6 py-2 mt-12 text-lg text-red-400 whitespace-nowrap bg-white rounded-3xl max-md:px-5 max-md:mt-10"
+                <div class="flex justify-center self-center pl-12 pr-6 py-2 text-lg text-[#F25E5E] whitespace-nowrap bg-white border-[3px] border-[#F25E5E] rounded-3xl max-md:px-5 max-md:mt-10 group-hover:text-[#343C53] group-hover:border-[#343C53]"
                     tabindex="0">
-                    Jumlah = <input class="w-12" type="number"
+                    Jumlah = <input class="w-12 ml-2" type="number"
                         name="details[{{ count($materials) + $index }}][amount]" value="{{ $detail->amount }}">
                 </div>
             @endif

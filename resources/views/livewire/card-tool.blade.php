@@ -19,7 +19,7 @@
                     <p>
                         Karakter: {{ $detail->material->character }}
                     </p>
-                    <p class="text-base">
+                    <p class="h-12 text-base truncate">
                         {{ $detail->material->condition }}
                     </p>
                     <p class="text-xl font-bold">
