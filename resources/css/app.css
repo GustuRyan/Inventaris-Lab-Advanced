@@ -59,3 +59,18 @@ body {
     background-color: #F25E5E; /* Warna latar belakang tombol saat hover */
     border-color: #F25E5E; /* Warna border tombol saat hover */
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #515769; 
+    padding: 8px; 
+    text-align: center; 
+}
+
+thead {
+    background-color: rgb(241 245 249); 
+}
