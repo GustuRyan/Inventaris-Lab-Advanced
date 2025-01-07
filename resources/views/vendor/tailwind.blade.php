@@ -1,6 +1,6 @@
 @if ($details->hasPages())
-    <nav role="navigation" aria-label="Pagination Navigation" class="w-screen flex items-center justify-between">
-        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+    <nav role="navigation" aria-label="Pagination Navigation" class="w-full flex items-center justify-between">
+        <div class="w-full flex-1 flex items-center justify-between">
             <div>
                 <p class="text-sm text-gray-700 leading-5">
                     {!! __('Showing') !!}

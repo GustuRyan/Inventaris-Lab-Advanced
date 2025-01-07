@@ -73,7 +73,8 @@
                                     <div class="flex flex-col self-start mt-3">
                                         <h2 class="text-[28px] font-bold">Alat Sejumlah</h2>
                                         <p class="text-6xl font-bold">
-                                            <span class="text-red-400">{{ $room->total_tools }}</span> unit {{-- Jumlah unit alat --}}
+                                            <span class="text-red-400">{{ $room->total_tools }}</span> unit
+                                            {{-- Jumlah unit alat --}}
                                         </p>
                                     </div>
                                 </div>
@@ -93,7 +94,8 @@
                                     <div class="flex flex-col self-start mt-3">
                                         <h2 class="text-[28px] font-bold">Bahan Sejumlah</h2>
                                         <p class="text-6xl font-bold">
-                                            <span class="text-red-400">{{ $room->total_materials }}</span> jenis {{-- Jumlah jenis bahan --}}
+                                            <span class="text-red-400">{{ $room->total_materials }}</span> jenis
+                                            {{-- Jumlah jenis bahan --}}
                                         </p>
                                     </div>
                                 </div>
@@ -127,54 +129,19 @@
                 </div>
             </div>
             @if ($recommendations->count() > 0)
-                <p class="mt-56 text-[#343C53] text-[28px] font-bold mb-12">
+                <p class="mt-56 text-[#343C53] text-[28px] font-bold mb-4">
                     Rekomendasi Barang Untuk Kamu
                 </p>
                 <div
-                    class="w-full h-full flex justify-between items-center text-[28px} text-[#343C53] text-[28px] font-bold overflow-x-scroll scrollbar-hide gap-16">
+                    class="w-full h-full flex items-center text-[28px} text-[#343C53] text-[28px] font-bold overflow-x-scroll scrollbar-hide gap-4 p-6 rounded-xl bg-gray-100">
                     @foreach ($recommendations as $recommendation)
-                        <article class="flex flex-col w-[300px] h-[448px]">
-                            <section
-                                class="flex overflow-hidden relative flex-col grow justify-center text-center w-[300px] h-[448px]">
-                                <img loading="lazy" src="/assets/img/Rectangle 2.png"
-                                    class="object-cover absolute inset-0 size-full" alt="Image description" />
-                                <div class="flex relative flex-col px-9 pb-14 rounded-2xl max-md:px-5"
-                                    style="background: linear-gradient(180deg, rgba(140, 54, 54, 0.00) 0%, #F25E5E 89.5%); height: 100%;">
-                                    <h3 class="mt-20 text-2xl font-bold text-white max-md:mt-10">
-                                        {{-- Menampilkan Detail Berdasarkan Filter --}}
-                                        @if ($filter == 'material')
-                                            {{ $recommendation->material->material_name }} {{-- Nama material --}}
-                                            <br>
-                                            Karakter : {{ $recommendation->material->character }} {{-- Karakter material --}}
-                                            <br><br>
-                                            <span class="text-xl">
-                                                {{ $recommendation->material->condition }} {{-- Kondisi material --}}
-                                            </span>
-                                        @else
-                                            {{ $recommendation->tool->tool_name }} {{-- Nama alat --}}
-                                            <br>
-                                            Merk : {{ $recommendation->tool->merk }} {{-- Merk alat --}}
-                                            <br><br>
-                                            Kondisi
-                                            {{ $recommendation->tool->condition }} {{-- Kondisi alat --}}
-                                        @endif
-                                    </h3>
-                                    <button
-                                        class="justify-center self-center px-10 py-3 mt-12 text-xl text-red-400 whitespace-nowrap bg-white rounded-3xl max-md:px-5 max-md:mt-10 hover:bg-[#343C53] add-to-cart"
-                                        data-id="{{ $filter == 'material' ? $recommendation->material->id : $recommendation->tool->id }}"
-                                        {{-- ID item --}} data-type="{{ $filter == 'material' ? 'material' : 'tool' }}"
-                                        tabindex="0"> {{-- Tipe item --}}
-                                        PINJAM
-                                    </button>
-                                </div>
-                            </section>
-                        </article>
+                        <livewire:card-tool :detail="$recommendation" :filter="$filter" />
                     @endforeach
                 </div>
             @else
                 <div class="mt-36"></div>
             @endif
-            <div class="mt-20 w-full flex justify-between items-center text-[#343C53] text-[28px] font-bold">
+            <div class="mt-12 w-full flex justify-between items-center text-[#343C53] text-[28px] font-bold">
                 <span>
                     Ditampilkan Berdasarkan
                 </span>
@@ -214,48 +181,14 @@
                 </div>
             </div>
             <div class="mt-12 max-md:mt-40 max-md:max-w-full">
-                <div class="w-full flex flex-wrap gap-12 max-md:flex-col max-md:gap-0 justify-between">
+                <div class="w-full grid grid-cols-4 gap-12 justify-between">
                     {{-- Daftar Detail Alat/Bahan --}}
                     @foreach ($details as $detail)
-                        <article class="flex flex-col w-[300px] max-md:ml-0 max-md:w-full">
-                            <section
-                                class="flex overflow-hidden relative flex-col grow justify-center text-center aspect-[0.67] max-md:mt-10">
-                                <img loading="lazy" src="/assets/img/Rectangle 2.png"
-                                    class="object-cover absolute inset-0 size-full" alt="Image description" />
-                                <div class="flex relative flex-col px-9 pb-14 rounded-2xl max-md:px-5"
-                                    style="background: linear-gradient(180deg, rgba(140, 54, 54, 0.00) 0%, #F25E5E 89.5%); height: 100%;">
-                                    <h3 class="mt-20 text-2xl font-bold text-white max-md:mt-10">
-                                        {{-- Menampilkan Detail Berdasarkan Filter --}}
-                                        @if ($filter == 'material')
-                                            {{ $detail->material->material_name }} {{-- Nama material --}}
-                                            <br>
-                                            Karakter : {{ $detail->material->character }} {{-- Karakter material --}}
-                                            <br><br>
-                                            <span class="text-xl">
-                                                {{ $detail->material->condition }} {{-- Kondisi material --}}
-                                            </span>
-                                        @else
-                                            {{ $detail->tool->tool_name }} {{-- Nama alat --}}
-                                            <br>
-                                            Merk : {{ $detail->tool->merk }} {{-- Merk alat --}}
-                                            <br><br>
-                                            Kondisi
-                                            {{ $detail->tool->condition }} {{-- Kondisi alat --}}
-                                        @endif
-                                    </h3>
-                                    <button
-                                        class="justify-center self-center px-10 py-3 mt-12 text-xl text-red-400 whitespace-nowrap bg-white rounded-3xl max-md:px-5 max-md:mt-10 hover:bg-[#343C53] add-to-cart"
-                                        data-id="{{ $filter == 'material' ? $detail->material->id : $detail->tool->id }}"
-                                        {{-- ID item --}}
-                                        data-type="{{ $filter == 'material' ? 'material' : 'tool' }}" tabindex="0">
-                                        {{-- Tipe item --}}
-                                        PINJAM
-                                    </button>
-                                </div>
-                            </section>
-                        </article>
+                        <livewire:card-tool :detail="$detail" :filter="$filter" />
                     @endforeach
-                    @include('vendor.tailwind') {{-- Menyertakan template tailwind vendor --}}
+                    <div class="col-span-4">
+                        @include('vendor.tailwind') {{-- Menyertakan template tailwind vendor --}}
+                    </div>
                 </div>
             </div>
         </section>
@@ -312,8 +245,4 @@
             });
         });
     </script>
-
-
-
-
 @endsection
