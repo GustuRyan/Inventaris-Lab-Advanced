@@ -35,6 +35,7 @@ class CartController extends Controller
                     'user_id' => auth()->id(),
                     'material_id' => ($request->type == 'material') ? $request->item_id : 0,
                     'tool_id' => ($request->type == 'material') ? 0 : $request->item_id,
+                    'room_id' => $request->room_id,
                     'amount' => $amount,
                 ]);
             }
@@ -48,6 +49,4 @@ class CartController extends Controller
             return response()->json(['error' => 'An error occurred while adding item to cart'], 500);
         }
     }
-
-
 }
