@@ -13,16 +13,21 @@ return new class extends Migration
     {
         Schema::create('room_details', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->integer('room_id');
-            $table->integer('material_id');
-            $table->integer('tool_id');
-            $table->integer('amount');
-
             
+            // Kolom foreign key harus menggunakan tipe unsignedBigInteger
+            $table->unsignedBigInteger('room_id');
+            $table->unsignedBigInteger('material_id')->nullable(); 
+            $table->unsignedBigInteger('tool_id')->nullable(); 
+            
+            // Kolom stok
+            $table->integer('total_stocks')->default(0); 
+            $table->integer('current_stocks')->default(0); 
+            $table->timestamps();
+            
+            // Definisi foreign key
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
-            $table->foreign('tool_id')->references('id')->on('tools')->onDelete('cascade');
             $table->foreign('material_id')->references('id')->on('materials')->onDelete('cascade');
+            $table->foreign('tool_id')->references('id')->on('tools')->onDelete('cascade');
         });
     }
 
