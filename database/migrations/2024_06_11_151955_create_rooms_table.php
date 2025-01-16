@@ -16,8 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string('room_name');
             $table->string('status');
-            $table->integer('total_tools');
-            $table->integer('total_materials');
+            $table->integer('total_tools')->nullable();
+            $table->integer('total_materials')->nullable();
             $table->text('major_name');
             $table->text('faculty_name');
         });
