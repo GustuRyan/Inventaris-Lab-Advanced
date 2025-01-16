@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('tool_name');
             $table->text('merk');
             $table->text('condition');
-            $table->integer('stocks');
         });
     }
 
