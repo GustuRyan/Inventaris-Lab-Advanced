@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('material_name');
             $table->text('character');
             $table->text('condition');
-            $table->integer('stocks');
         });
     }
 
