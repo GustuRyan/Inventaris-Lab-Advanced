@@ -17,11 +17,13 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('tool_id');
             $table->string('material_id');
+            $table->string('room_id');
             $table->integer('amount');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('tool_id')->references('id')->on('tools')->onDelete('cascade');
             $table->foreign('material_id')->references('id')->on('materials')->onDelete('cascade');
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
         });
     }
 
