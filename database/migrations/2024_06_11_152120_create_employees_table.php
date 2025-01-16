@@ -16,10 +16,11 @@ return new class extends Migration
             $table->timestamps();
             $table->string('employee_name');
             $table->string('nip');
-            $table->string('role');
             $table->integer('room_id');
+            $table->integer('user_id');
 
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
