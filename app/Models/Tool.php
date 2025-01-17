@@ -11,7 +11,6 @@ class Tool extends Model
     protected $fillable = [
         'tool_name',
         'merk',
-        'stock',
         'condition',
         'in_date',
     ];

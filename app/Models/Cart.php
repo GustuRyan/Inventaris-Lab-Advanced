@@ -12,6 +12,7 @@ class Cart extends Model
         'material_id',
         'tool_id',
         'user_id',
+        'room_id',
         'amount',
     ];
     
@@ -23,5 +24,10 @@ class Cart extends Model
     public function tool()
     {
         return $this->belongsTo(Tool::class, 'tool_id');
+    }
+
+    public function room()
+    {
+        return $this->belongsTo(Room::class, 'room_id');
     }
 }
