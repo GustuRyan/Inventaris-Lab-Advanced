@@ -13,10 +13,17 @@ class Transaction extends Model
         'borrow_date',
         'return_date',
         'user_id',
+        'room_id',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function room()
+    {
+        return $this->belongsTo(Room::class, 'room_id');
+    }
+
 }
