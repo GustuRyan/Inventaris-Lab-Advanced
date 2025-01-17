@@ -14,7 +14,8 @@ class RoomDetail extends Model
         'tool_id',
         'material_id',
         'room_id',
-        'amount',
+        'total_stocks',
+        'current_stocks',
     ];
     public function room()
     {
