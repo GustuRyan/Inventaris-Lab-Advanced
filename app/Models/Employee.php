@@ -12,6 +12,16 @@ class Employee extends Model
         'employee_name',
         'nip',
         'room_id',
-        'role',
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function room()
+    {
+        return $this->belongsTo(Room::class, 'room_id');
+    }
 }
