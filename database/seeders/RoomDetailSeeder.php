@@ -16,27 +16,28 @@ class RoomDetailSeeder extends Seeder
         $roomDetails = [];
 
         for ($i = 1; $i <= 150; $i++) {
+            $roomId = rand(1, 5);
             if ($i <= 90) {
-                $roomId = rand(1, 5);
-                $materialId = rand(1, 60); // Random material_id including 0
-                $toolId = 0; // Random tool_id including 0
-                $amount = rand(100, 150);
+                $materialId = rand(1, 60);
+                $toolId = 0;
+                $total_amount = rand(100, 150);
             } else {
-                $roomId = rand(1, 5);
-                $materialId = 0; // Random material_id including 0
-                $toolId = rand(1, 60); // Random tool_id including 0
-                $amount = rand(10, 30);
+                $materialId = 0; 
+                $toolId = rand(1, 60);
+                $total_amount = rand(10, 30);
             }
-            
+
             $roomDetails[] = [
                 'room_id' => $roomId,
                 'material_id' => $materialId,
                 'tool_id' => $toolId,
-                'amount' => $amount,
+                'total_stocks' => $total_amount,
+                'current_stocks' => $total_amount,
             ];
         }
 
-        // Insert data into the database
+        // Insert data ke database
         DB::table('room_details')->insert($roomDetails);
     }
+
 }
