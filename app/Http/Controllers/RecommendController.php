@@ -31,14 +31,13 @@ class RecommendController extends Controller
             }
             
             foreach ($words as $word) {
-                // Hitung kemiripan
                 $similarity = similar_text($token, $word->word, $percent);
-                if ($percent > 50) { // Jika kemiripan lebih dari 80%
+                if ($percent > 50) { 
                     $matches[] = [
                         'token' => $token,
                         'matched_word' => $word->word,
                         'similarity' => $percent,
-                        'record' => $word // Menyimpan seluruh baris yang mengandung kata yang mirip
+                        'record' => $word 
                     ];
                 }
             }
