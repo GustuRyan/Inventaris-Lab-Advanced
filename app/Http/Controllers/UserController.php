@@ -32,19 +32,15 @@ class UserController extends Controller
 
     public function updateRole(Request $request, $id)
     {
-        // Validasi input
         $request->validate([
             'role_id' => 'required|integer',
         ]);
 
-        // Cari transaksi berdasarkan ID
         $user = User::findOrFail($id);
 
-        // Update status
         $user->role_id = $request->role_id;
         $user->save();
 
-        // Redirect kembali dengan pesan sukses
         return redirect()->back()->with('success', 'Role pengguna berhasil diperbarui!');
     }
 }
