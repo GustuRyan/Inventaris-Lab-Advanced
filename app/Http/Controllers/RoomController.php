@@ -137,7 +137,6 @@ class RoomController extends Controller
 
     public function admin_product()
     {
-        // Tambahkan custom pagination parameter untuk materials dan tools
         $materials = Material::where('id', '!=', 0)->paginate(10, ['*'], 'materials_page');
         $tools = Tool::where('id', '!=', 0)->paginate(10, ['*'], 'tools_page');
 
