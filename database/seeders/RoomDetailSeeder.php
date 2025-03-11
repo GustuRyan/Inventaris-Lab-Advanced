@@ -36,7 +36,6 @@ class RoomDetailSeeder extends Seeder
             ];
         }
 
-        // Insert data ke database
         DB::table('room_details')->insert($roomDetails);
     }
 
