@@ -117,7 +117,6 @@ class RecommendSeeder extends Seeder
             ['tool_id' => rand(1, 60), 'material_id' => '0', 'practice' => 'Analisis Farmasi', 'relation' => 'farmasi']
         ];
 
-        // Inserting into database
         DB::table('recommend')->insert($recommends);
     }
 }
