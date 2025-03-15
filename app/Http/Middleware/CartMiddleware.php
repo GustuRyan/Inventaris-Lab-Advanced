@@ -18,10 +18,8 @@ class CartMiddleware
     {
         $userId = auth()->id();
         
-        // Ambil data cart berdasarkan user ID
         $cartData = Cart::where('user_id', $userId)->get();
         
-        // Tambahkan data cart ke dalam request
         $request->merge(['cartData' => $cartData]);
 
         return $next($request);
