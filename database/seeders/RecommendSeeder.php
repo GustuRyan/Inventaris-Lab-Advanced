@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class RecommendSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $recommends = [
