@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class MaterialSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $material0 = ['id' => 0, 'material_name' => '', 'character' => '', 'condition' => '', 'in_date' => ''];
